@@ -1,5 +1,30 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../test_config.rb')
 
+
+describe "GET /movies" do
+	before do
+
+    @movies = [ Movie.create!(name: 'Jaws', rating: 5) ]
+  	@movies << Movie.create!(name: 'Superman', rating: 4)
+  	@movies << Movie.create!(name: 'Star Treck', rating: 5)
+  	get '/movies'
+  end
+
+	it "responds OK" do
+		assert last_response.ok?
+	end
+
+	it "list all movies" do
+		@movies.each do |movie|
+		assert_includes last_response.body, movie.name
+		end
+	end
+
+	
+end
+
+
+
 describe "GET /movies/new" do
   it "responds OK" do
     get "/movies/new"

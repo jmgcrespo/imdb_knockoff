@@ -1,0 +1,7 @@
+<h1> Listdo </h1>
+	<ul>
+		<% @movies.each do |movie| %>
+		<li><%= link_to movie.name,url_for(:movies,:show,:id => movie.id) %></li>
+		<% end %>
+	</ul>
+	<%= link_to("New moview",url_for(:movies,:new)) %>
