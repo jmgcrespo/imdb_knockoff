@@ -1,5 +1,4 @@
 require 'rake/testtask'
-
 test_tasks = Dir['test/*/'].map { |d| File.basename(d) }
 
 test_tasks.each do |folder|
@@ -8,6 +7,5 @@ test_tasks.each do |folder|
     test.verbose = true
   end
 end
-
 desc "Run application test suite"
 task 'test' => test_tasks.map { |f| "test:#{f}" }

@@ -1,12 +1,12 @@
 ImdbKnockoff::App.controllers :home do
   get :index, map: '/' do
-  	@username = session[:username]
+    @username = session[:username]
     render 'index'
   end
 
   get :username, map: '/username' do
-  	session[:username] = Time.now
+    session[:username] = Time.now
 
-  	redirect to('/')
+    redirect to('/')
   end
 end
