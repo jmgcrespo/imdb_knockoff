@@ -1,5 +1,5 @@
 ImdbKnockoff::App.controllers :movies do
-  before :new, :create, :update do
+  before :new, :create, :update, :delete do
     redirect url(:session, :new) unless session[:authenticated]
   end
 
@@ -42,5 +42,11 @@ ImdbKnockoff::App.controllers :movies do
     @movie.update(params[:movie])
 
     redirect url(:movies, :show, id: @movie.id)
+  end
+  delete :delete, map: 'movies/:id/delete' do
+    @movie = Movie.find(params[:id])
+    @movie.delete
+
+    redirect url(:movies, :index)
   end
 end
