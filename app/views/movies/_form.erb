@@ -1,5 +1,5 @@
-
-<% form_for(@movie,path) do |f|%>
+<% verb ||= :post %>
+<% form_for(@movie,path, method: verb) do |f|%>
   <%= f.label("Movie Name") %>
   <%= f.text_field(:name) %>
   <%= f.label(:rating) %>
