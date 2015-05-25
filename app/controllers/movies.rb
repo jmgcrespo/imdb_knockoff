@@ -6,7 +6,7 @@ ImdbKnockoff::App.controllers :movies do
   get :new do
     @movie = Movie.new
 
-    render :new, locals: { path: url(:movies, :create) }
+    render :new
   end
 
   post :create, map: '/movies' do
@@ -21,8 +21,7 @@ ImdbKnockoff::App.controllers :movies do
 
   get :edit, map: 'movies/:id/edit/' do
     @movie = Movie.find(params[:id])
-    render :new, locals: { path: url(:movies, :update, id: @movie.id),
-                           method: 'put' }
+    render :edit
   end
 
   get :show, map: '/movies/:id' do

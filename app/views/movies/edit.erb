@@ -1,13 +1,7 @@
+<%= partial  'movies/form', engine: :erb, locals: { path: url(:movies, :update,
+     id: @movie.id), method: 'put' } %>
 
-<% form_for(@movie,path) do |f|%>
-  <%= f.label("Movie Name") %>
-  <%= f.text_field(:name) %>
-  <%= f.label(:rating) %>
-
-  <% options = [ (1..5).to_a ].transpose %>
-  <%= f.select(:rating,options: options ) %>
-  <%= f.submit %>
-<%end%>
+<%= partial 'movies/delete', engine: :erb %>
 
 
 

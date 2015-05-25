@@ -67,9 +67,8 @@ describe 'UPDATE /movies/:id' do
   end
 
   it 'updated a movie' do
-    post "/movies/#{@movie.id}", movie: { id: @movie.id, name: 'ET',
-                                          rating: @movie.rating }
-
+    put "/movies/#{@movie.id}", movie: { id: @movie.id, name: 'ET',
+                                         rating: @movie.rating }
     jaws = Movie.first
     assert_equal 'ET', jaws.name
     assert_equal 5, jaws.rating
@@ -81,5 +80,15 @@ describe 'UPDATE /movies/:id' do
     assert_match(/Jaws/, last_response.body)
     assert_match(/5/, last_response.body)
     assert_match(/submit/, last_response.body)
+  end
+end
+
+describe 'Delete' do
+  it 'deletes a movie if you want to' do
+    @movie = Movie.create!(name: 'Jaws', rating: 5)
+    env 'rack.session', authenticated: true
+
+    delete "movies/#{@movie.id}/delete"
+    assert_equal 0, Movie.count
   end
 end
