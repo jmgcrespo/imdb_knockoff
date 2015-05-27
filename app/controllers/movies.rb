@@ -5,7 +5,6 @@ ImdbKnockoff::App.controllers :movies do
 
   get :new do
     @movie = Movie.new
-
     render :new
   end
 
@@ -26,13 +25,11 @@ ImdbKnockoff::App.controllers :movies do
 
   get :show, map: '/movies/:id' do
     @movie = Movie.find(params[:id])
-
     render :show
   end
 
   get :index do
     @movies = Movie.all
-
     render :index
   end
 
@@ -42,7 +39,8 @@ ImdbKnockoff::App.controllers :movies do
 
     redirect url(:movies, :show, id: @movie.id)
   end
-  delete :delete, map: 'movies/:id/delete' do
+
+  delete :delete, map: 'movies/:id' do
     @movie = Movie.find(params[:id])
     @movie.delete
 

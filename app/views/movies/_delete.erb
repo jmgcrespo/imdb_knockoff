@@ -1,4 +1,3 @@
-<% form_for(@movie,url_for(:movies, :delete, id: @movie.id), method: :delete) do |f| %>
-<%= f.hidden_field(:id) %>
+<% form_for(@movie, url_for(:movies, :delete, id: @movie.id), method: :delete) do |f| %>
 <%= f.submit("Delete") %>
 <% end %>

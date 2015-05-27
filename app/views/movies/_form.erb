@@ -1,11 +1,9 @@
 <% verb ||= :post %>
-<% form_for(@movie,path, method: verb) do |f|%>
+<% form_for(@movie, path, method: verb) do |f|%>
   <%= f.label("Movie Name") %>
   <%= f.text_field(:name) %>
   <%= f.label(:rating) %>
-
-  <% options = [ (1..5).to_a ].transpose %>
-  <%= f.select(:rating,options: options ) %>
+  <%= f.select(:rating,options: Movie.rating_range.to_a ) %>
   <%= f.submit %>
 <%end%>
 

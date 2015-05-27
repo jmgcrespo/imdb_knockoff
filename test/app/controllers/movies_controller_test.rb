@@ -88,7 +88,7 @@ describe 'Delete' do
     @movie = Movie.create!(name: 'Jaws', rating: 5)
     env 'rack.session', authenticated: true
 
-    delete "movies/#{@movie.id}/delete"
+    delete "movies/#{@movie.id}"
     assert_equal 0, Movie.count
   end
 end
