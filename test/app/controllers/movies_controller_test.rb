@@ -60,6 +60,7 @@ describe 'POST /movies' do
     assert last_response.redirect?
   end
 end
+
 describe 'UPDATE /movies/:id' do
   before do
     @movie = Movie.create!(name: 'Jaws', rating: 5)
@@ -72,6 +73,13 @@ describe 'UPDATE /movies/:id' do
     jaws = Movie.first
     assert_equal 'ET', jaws.name
     assert_equal 5, jaws.rating
+  end
+end
+
+describe 'Editing a line' do
+  before do
+    @movie = Movie.create!(name: 'Jaws', rating: 5)
+    env 'rack.session', authenticated: true
   end
 
   it 'can edit a line' do

@@ -3,7 +3,7 @@
   <%= f.label("Movie Name") %>
   <%= f.text_field(:name) %>
   <%= f.label(:rating) %>
-  <%= f.select(:rating,options: Movie.rating_range.to_a ) %>
+  <%= f.select(:rating, options: Movie.rating_range.to_a ) %>
   <%= f.submit %>
 <%end%>
 
